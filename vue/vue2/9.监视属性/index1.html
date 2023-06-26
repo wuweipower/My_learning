@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>weather is {{info}}</p>
+        <button @click="changeWeather">click</button>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                isHot:true
+            },
+            computed:{
+                info()
+                {
+                    return this.isHot ? 'hot':'cool'
+                }
+            },
+            methods:{
+                changeWeather()
+                {
+                    this.isHot = !this.isHot
+                }
+            },
+            watch:{
+                isHot:{
+                    immediate:true,//初始化的时候调用
+                    //当isHot改变时调用
+                    handler(newVal,oldVal)
+                    {
+                        console.log()
+                    }
+                }
+            }
+        })
+
+        vm.$watch('isHot',{
+            
+        })
+
+    </script>
+</body>
+</html>

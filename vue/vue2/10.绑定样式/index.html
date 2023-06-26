@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .normal{
+            size: 0cap;
+        }
+        .mood{
+            size: 0cap;
+        }
+        .basic{
+            size: 0cap;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}</p>
+        <div class="basic" :class="mood" @click='changeMood'>
+            <div class="basic" :class="arr" @click='changeMood'>
+                <div class="basic" :style="{fontSize :size+'px'}" @click='changeMood'>
+                    :style="{fontSize :size+'px'}" 写成对象的形式
+                    也可以数组
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        new Vue({
+            el:'#root',
+            data:{
+                name:'Vue',
+                mood:'nomal',
+                arr:['',''],//动态
+                size:10,
+            },
+            methods: {
+                changeMood()
+                {
+                    this.mood = 'happy'
+                }
+            },
+        })
+
+
+    </script>
+</body>
+</html>

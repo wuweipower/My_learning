@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>8-PUZZLE</title>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <div id="container">
+        
+        <button id="pos0" class="numblock">
+            1
+        </button><button id="pos1" class="numblock">
+            2
+        </button><button id="pos2" class="numblock">
+            3
+        </button><button id="pos3" class="numblock">
+            4
+        </button><button id="pos4" class="numblock">
+            5
+        </button><button id="pos5" class="numblock">
+            6
+        </button><button id="pos6" class="numblock">
+            7
+        </button><button id="pos7" class="numblock">
+            8
+        </button><button id="pos8" class="numblock">
+            &nbsp;
+        </button>
+
+    </div>
+    <div id="controller">
+        <input type="radio" name="method" value="BFS">BFS (Breadth-First-Search)
+        <input type="radio" name="method" value="DFS">DFS (Depth-First-Search)<br>
+        <input type="radio" name="method" value="Best">BFS (Best-First-Search)
+        <input type="radio" name="method" value="Branch">(Brunch-And-Bound)
+    </div>
+    <div id="resetcontroller">
+        <button id="reset" onclick="init()">Initialization</button>
+        <button id="run" onclick="run()">Run</button>
+    </div>
+    <div id="Info">
+        <p>result: <span id="result"></span> </p>
+        <p>Time(s): <span id="time"></span></p>
+        <p>Steps: <span id="step"></span></p>
+    </div>
+
+    <!-- <div id="resultcontainer">
+        <h4 id="resTitle">输出结果显示</h4>
+        <textarea id="result" cols="50" rows="25" readonly="true" resize="false"></textarea>
+    </div> -->
+
+
+    <script type="text/javascript" src="algorithm.js"></script>
+    <style type="text/css">
+        .numblock {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 1px;
+            padding: 0;
+            font-size: 26pt;
+            outline: none;
+            background-color: white;
+            border-radius: 10px;
+            border-color: lightgrey;
+        }
+
+        #title {
+            width: 400px;
+            margin: 40px auto;
+            position: relative;
+            text-align: center;
+        }
+
+        #container {
+            width: 260px;
+            height: 260px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        #controller {
+            width: 500px;
+            margin: 20px auto;
+            position: relative;
+            text-align: center;
+        }
+        #Info
+        {
+            position: relative;
+            left: 30%;
+        }
+        #controller > button {
+            background-color: rgb(46,205,113);
+            color: white;
+            border-radius: 10px;
+            border: 2px;
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #resetcontroller {
+            width: 400px;
+            margin: 20px auto;
+            position: relative;
+            text-align: center;
+        }
+
+        #resetcontroller > button {
+            background-color: rgb(76,139,245);
+            color: white;
+            border-radius: 10px;
+            border: 2px;
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #resultcontainer{
+            margin: 5px auto;
+            position: relative;
+            text-align: center;
+        }
+
+        #result {
+            resize: none;
+        }
+    </style>
+</body>
+</html>

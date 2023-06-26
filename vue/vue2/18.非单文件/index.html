@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <school></school>
+        <my-stu></my-stu>
+    </div>
+
+    <div id = 'root1'>
+        <parent></parent>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+
+        //创建组件
+        const school = Vue.extend({
+            template:
+            `
+            <h1>{{name}}</h1>
+            `,
+            data()//必须使用函数式 如果是对象的形式
+                  //引起的问题就是指针指向同一个地方，一个地方改了，另一个也改
+            {
+                return {
+                    name:'school'
+                }
+            }
+        })
+
+        const student = Vue.extend({
+            template:
+            `
+            <h1>{{name}}</h1>
+            `,
+            name:'stu',//开发者工具中的名字
+            data()
+            {
+                return {
+                    name:'student'
+                }
+            }
+        })
+
+        // const student = Vue.extend 简写 const studet = {}
+
+        //全局注册
+        Vue.component('school',school)
+
+
+        new Vue({
+            el:'#root',
+            //局部注册组件
+            components:{
+                school:school,
+                'my-stu':student,
+            }
+        })
+
+
+        /**
+         * 主键名 'my-school':school 最终会被vue变成驼峰
+         * 使用驼峰需要脚手架
+         * 
+        */
+
+        //嵌套组件
+
+        //child
+        const child = {
+            template:
+            `
+            <h1>{{name}}</h1>
+            `,
+            data(){
+                return {
+                    name:'child',
+                }
+            }
+        }
+
+        const parent={
+            template:
+            `
+            <div>
+                <h1>{{name}}</h1>
+                <child></child>
+            </div>
+
+            `,
+            data()
+            {
+                return {
+                    name:"parent"
+                }
+            },
+            components:{
+                child,
+            }
+
+        }
+
+        new Vue(
+            {
+            el:'#root1',
+            components:{
+                parent
+            }
+            }
+        )
+
+        
+    </script>
+</body>
+</html>

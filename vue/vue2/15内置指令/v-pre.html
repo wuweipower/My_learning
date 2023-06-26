@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <!-- 
+            跳过所在结点的编译
+            可以利用它跳过没有指令语法的的结点，加快编译
+         -->
+        <div v-pre>init:{{n}}</div>
+        <div >{{n}}</div>
+        <button @click="n++">n+1</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        //创建vue实例 参数是对象
+        //vue实例与容器是一对一的关系
+        const x = new Vue({
+            el:'#root',//element 选择器css 或者使用getelementById
+            data:{
+                n:1,
+            }
+        })
+
+    </script>
+</body>
+</html>

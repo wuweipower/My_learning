@@ -1,0 +1,6 @@
+# no .exe files
+*.exe
+# no .doc files
+*.doc
+# no .txt files
+*.txt

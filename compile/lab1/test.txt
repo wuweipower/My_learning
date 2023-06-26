@@ -1,0 +1,25 @@
+const int num = 4;
+float f = 1.2;
+$
+int main()
+{
+    /****ts*/
+    //aaa
+   int count == 51.1;
+   int i = 1;
+   while(count--)
+   {
+       i = i + 1;
+   }
+
+	'z'
+    ||
+    + -
+    * /
+    +=
+    -=
+    %=
+    'a
+    1a;
+    char c='c ;
+}

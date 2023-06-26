@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!-- 
+    收集表单数据:
+ruo:则v-model收集的是value值，用户输入的就是value值。input type="text"/
+若:则v-model收集的是value值，且要给标签配置value值input type="radio"/岩:<input type="checkbox1.没有配置input的value属性，那么收集的就是checked (勾选 or 未勾选，是布尔值)2.配置input的value属性:(1)v-model的初始值是非数组，那么收集的就是checked (勾选 or 未勾选，是布尔值)(2)v-model的初始值是数组，那么收集的的就是value组成的数组备注: v-model的三个修饰符:
+lazy:失去焦点再收集数据number:输入字符串转为有效的数宁trim:输入首尾空格过滤
+ -->
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <form action="" @submit.prevent="demo">
+            <label for="demo">account</label> 
+            <input type="text" v-model="account">
+            age<input type="number" v-model.number="age">
+            <br/>
+            sex:
+            <!-- 要配置value -->
+            man<input type="radio" name="sex" v-model="sex" value="male">
+            female<input type="radio" name="sex" v-model="sex" value="female">
+            <br/>
+            hobby:
+            <!-- 也要配置value 否则默认配置checked -->
+            learning <input type="checkbox" v-model="hobby" value="learning">
+            eating   <input type="checkbox" v-model="hobby" value="eating">
+            <br/>
+            city
+            <select v-model="city">
+                <option value="beijing">beijing</option>
+                <option value="shanghai">shanghai</option>
+            </select>
+            
+            <textarea name="" id="" cols="30" rows="10" v-model="other"></textarea>
+            <button>submit</button>
+
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        //创建vue实例 参数是对象
+        //vue实例与容器是一对一的关系
+        const x = new Vue({
+            el:'#root',//element 选择器css 或者使用getelementById
+            data:{
+                account:"",
+                sex:"",
+                hobby:[],
+                city:"",
+                other:"",
+                age:18,
+            },
+            methods: {
+                demo()
+                {
+                    alert(1)
+                    console.log(JSON.stringify(this._data))
+                }
+            },
+        })
+
+    </script>
+</body>
+</html>

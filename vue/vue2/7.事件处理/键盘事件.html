@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}</p>
+        <!-- 
+            enter
+            delete
+            space
+            tab 配合keydown
+            down
+            left
+            right
+
+            特殊
+            ctrl alt shift meta
+         -->
+        <input type="text" placeholder="按下回车提示输入"@keyup.enter='showInfo'>
+        <input type="text" placeholder="按下回车提示输入"@keyup.ctrl.y='showInfo'>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        new Vue({
+            el:'#root',
+            data:{
+                name:'Vue'
+            },
+            methods:{
+                showInfo(e)
+                {
+                    //如果不用enter这些按键别名，可以用下面实现
+                    // if(e.keycode!=13)使用按键的编码 e.key是按键名字
+                    // {
+
+                    // }
+                    console.log(e.target.value);
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}</p>
+        <button v-on:click="showInfo">click me</button>
+        <!-- 简写 和函数一样传参数 -->
+        <!-- 
+            @后面是事件名
+            配置在methods中，最终会在vm上
+            methods中配置的函数不要用箭头函数，不然this就不是vm
+            
+         -->
+        <button @click="showInfo1(66,$event)">click me1</button>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'Vue'
+            },
+            methods:{
+                showInfo(event)
+                {
+                    //console.log(event.target.innerText)
+                    //console.log(this) this 是vm
+                    alert('hello world')
+                },
+                showInfo1(num,e)
+                {
+                    //console.log(event.target.innerText)
+                    //console.log(this) this 是vm
+                    console.log(num)
+                    console.log(e)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

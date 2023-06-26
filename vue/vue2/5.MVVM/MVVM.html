@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+    <div id="root">
+        <h1>hello,{{name.toUpperCase()}},{{address}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+
+        /*
+        * model对应data的js对象
+        * viewmodel对应vue() data中的数据最终会到vm上
+        * 
+        */
+
+        //创建vue实例 参数是对象
+        //vue实例与容器是一对一的关系
+        const vm = new Vue({
+            el:'#root',//element 选择器css 或者使用getelementById
+            data:{//提供el所指定的容器去使用
+                name:'vue',
+                address: 'Guangzhou'
+            }
+        })
+
+    </script>
+</body>
+</html>

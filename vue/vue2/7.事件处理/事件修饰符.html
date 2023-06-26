@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}</p>
+        <!-- 
+            1.prevent 阻止默认事件
+            2.stop 阻止事件冒泡
+            3.once 事件只触发一次
+            4.capture 使用事件的捕获模式
+            5.self 只有event.target是当前操作的元素时才触发事件
+            6.passive 事件的默认行为立即执行，无需等待事件回调执行完毕
+            实质就是调用event对应的函数
+            可以连着点，链式编程
+         -->
+        <a href="http://www.baidu.com" @click.prevent="showInfo">baidu</a>
+    </div>
+    <!-- 准备好一个容器 {{}}只是一个分隔符设计成这样 里面是js表达式或者代码-->
+
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        new Vue({
+            el:'#root',
+            data:{
+                name:'Vue'
+            },
+            methods:{
+                showInfo(e)
+                {        
+                    alert('hello world')
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>
